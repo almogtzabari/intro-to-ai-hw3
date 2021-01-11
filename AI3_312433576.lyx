@@ -1,0 +1,1307 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass heb-article
+\begin_preamble
+\usepackage{graphicx}
+% Allows use of bold Greek characters
+\usepackage{bm} 
+\usepackage{physics}
+% Allows the use of multipule column documents
+% Add the code:
+% \begin{multicols*}{3}
+% \setlength{\columnsep}{1.5cm}
+% \setlength{\columnseprule}{0.4pt
+% \end{multicols*}
+%\usepackage{multicol}
+% Color related packages
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{colortbl}
+% Disables line breaks
+\usepackage[none]{hyphenat}
+\usepackage{ifthen}
+\usepackage{etoolbox}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{subfig}
+% Adds bookmarks to PDF
+\usepackage[super]{natbib}
+% Use \mathbbm1 to add the unit matrix
+\usepackage{bbm}
+\usepackage{algorithmic}
+\floatname{algorithm}{Algorithmus}
+% Allows for proper equation numbering
+\numberwithin{equation}{section}
+\floatname{algorithm}{Algorithmus}
+
+% Automatically centers figures inside figure floats
+\renewenvironment{figure}[1][]{%
+\ifthenelse{\equal{#1}{}}{%
+\@float{figure}
+}{%
+\@float{figure}[#1]%
+}%
+\centering
+}{%
+\end@float
+}
+
+% Automatically centers tables inside of table floats
+\renewenvironment{table}[1][]{%
+\ifthenelse{\equal{#1}{}}{%
+\@float{table}
+}{%
+\@float{table}[#1]%
+}%
+\centering
+}{%
+\end@float
+}
+
+% Deals with unwanted line breaks
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
+
+% Sets the text fonts for a nicer pdf view
+\IfFileExists{lmodern.sty}{}
+
+% Defines new colors
+\definecolor{darkblue}{RGB}{0,0,50.2}
+\definecolor{royalblue}{RGB}{17,30,108}
+\definecolor{aquamrine}{RGB}{127,255,212}
+\definecolor{turquoise}{RGB}{64,224,208}
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+
+
+
+% Shrinks the spacing between bulleted and numbered lists
+\let\oldenumerate=\enumerate
+\def\enumerate{
+\oldenumerate
+\setlength{\itemsep}{-1.5pt}
+}
+\let\olditemize=\itemize
+\def\itemize{
+\olditemize
+\setlength{\itemsep}{-1.5pt}
+}
+
+
+% Changes the page style and add the top line and numbering
+\cfoot{\thepage}
+
+% Allows you to add matlab code
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language hebrew
+\language_package default
+\inputencoding cp862
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.5cm
+\topmargin 3cm
+\rightmargin 1.5cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0bp
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+מבוא לבינה מלאכותית - תרגיל בית
+\family roman
+\series medium
+\shape up
+\size largest
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\end_layout
+
+\begin_layout Section*
+
+\bar under
+מגיש:
+\bar default
+ אלמוג צברי, 
+\numeric on
+312433576
+\numeric off
+.
+\end_layout
+
+\begin_layout Section*
+\begin_inset Formula 
+\[
+\,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\bar under
+תאריך הגשה:
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang english
+26/01/2021
+\lang hebrew
+
+\begin_inset Formula 
+\[
+\,
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\bar under
+מספר גיליון:
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\cto}[2]{\cancelto{_{#2}}{#1}}
+{\cancelto{_{#2}}{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\dexplain}[2]{\underset{\mathclap{\overset{\uparrow}{#2}}}{#1}}
+{\underset{\mathclap{\overset{\uparrow}{#2}}}{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\uexplain}[2]{\overset{\mathclap{\underset{\uparrow}{#2}}}{#1}}
+{\overset{\mathclap{\underset{\downarrow}{#2}}}{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ddexplain}[2]{\underset{\mathclap{\overset{\uparrow}{\overset{\uparrow}{#2}}}}{#1}}
+{\underset{\mathclap{\overset{\uparrow}{\overset{\uparrow}{#2}}}}{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\uuexplain}[2]{\overset{\mathclap{\underset{\uparrow}{\mathclap{\underset{\uparrow}{#2}}}}}{#1}}
+{\overset{\mathclap{\underset{\downarrow}{\mathclap{\underset{\uparrow}{#2}}}}}{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ccl}[1]{\cancel{#1}}
+{\cancel{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\realn}{\mathbb{R}}
+{\mathbb{R}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\naturaln}{\mathbb{N}}
+{\mathbb{N}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\wholen}{\mathbb{Z}}
+{\mathbb{Z}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ratn}{\mathbb{Q}}
+{\mathbb{Q}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\heb}[1]{\{\R{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\te}{\theta}
+{\theta}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\gint}[2]{\underset{#1}{\overset{#2}{\int}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\giint}[1]{\underset{#1}{\iint}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\giiint}[1]{\underset{#1}{\iiint}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\gsum}[2]{\underset{#1}{\overset{#2}{\sum}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\gprod}[2]{\underset{#1}{\overset{#2}{\prod}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ser}[2]{\left\{  #1_{#2}\right\}  _{#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\gin}{\subseteq}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ginneq}{\subset}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\upexplain}[2]{\overset{\mathclap{\underset{\uparrow}{#2}}}{#1}}
+{\overset{\mathclap{\underset{\downarrow}{#2}}}{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\muldot}{\cdot\dots\cdot}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\listdot}{,\dots,}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nemp}{\neq\emptyset}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\emp}{\emptyset}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\cto}[2]{\cancelto{_{#2}}{#1}}
+{\cancelto{_{#2}}{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\orderedset}[2]{(#1_{1},\dots,#1_{#2})}
+{(#1_{1},\dots,#1_{#2})}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\evat}[3]{\left.#1\right|_{#3}^{#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\heb}[1]{\text{{\R{\text{#1}}}}}
+{#1}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\floor}[1]{\text{\left\lfloor #1\right\rfloor }}
+{\text{\left\lfloor #1\right\rfloor }}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ceil}[1]{\text{\left\lceil #1\right\rceil }}
+{\left\lceil #1\right\rceil }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\evat}[3]{\left.#1\right|_{#2}^{#3}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\glim}[1]{\underset{%#1
+}{\lim}}
+{\underset{%#1
+}{\lim}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\dnote}[2]{\underbrace{#1}_{#2}}
+{\underbrace{#1}_{#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\unote}[2]{\overbrace{#1}^{#2}}
+{\overbrace{#1}^{#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\gcap}[1]{\underset{%#1
+}{\cap}}
+{\underset{%#1
+}{\cap}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\gcup}[1]{\underset{%#1
+}{\cup}}
+{\underset{%#1
+}{\cup}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\listlong}[2]{#1_{1},\dots,#1_{#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\listshort}[3]{\{#1\}_{#2=#3}^{\infty}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\grad}[1]{\nabla#1}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\div}[1]{\vec{\nabla}\cdot\vec{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\curl}[1]{\vec{\nabla}\times\vec{#1}}
+\end_inset
+
+
+\lang english
+ 
+\lang hebrew
+
+\begin_inset FormulaMacro
+\newcommand{\lap}[1]{\nabla^{2}#1}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\bra}[1]{\left\langle #1\right|}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ket}[1]{\left|#1\right\rangle }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ketbra}[2]{\left|#1\right\rangle \left\langle #2\right|}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\braket}[2]{\left\langle #1|#2\right\rangle }
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\pat}[1]{\left(#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\sag}[1]{\left[#1\right]}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\abs}[1]{\left|#1\right|}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\norm}[1]{\left\Vert #1\right\Vert }
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ps}[1]{\left(#1\right]}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\sp}[1]{\left[#1\right)}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\gr}[1]{\left\{  #1\right\}  }
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\htwo}[2]{\begin{pmatrix}#1  &  #2\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\hthree}[3]{\begin{pmatrix}#1  &  #2  &  #3\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\hfour}[4]{\begin{pmatrix}#1  &  #2  &  #3  &  #4\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\hfive}[5]{\begin{pmatrix}#1  &  #2  &  #3  &  #4  &  #5\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\hsix}[6]{\begin{pmatrix}#1  &  #2  &  #3  &  #4  &  #5  &  #6\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\hseven}[7]{\begin{pmatrix}#1  &  #2  &  #3  &  #4  &  #5  &  #6  &  #7\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\height}[8]{\begin{pmatrix}#1  &  #2  &  #3  &  #4  &  #5  &  #6  &  #7  &  #8\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\hnine}[9]{\begin{pmatrix}#1  &  #2  &  #3  &  #4  &  #5  &  #6  &  #7  &  #8  &  #9\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\vtwo}[2]{\begin{pmatrix}#1\\
+ #2 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\vthree}[3]{\begin{pmatrix}#1\\
+ #2\\
+ #3 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\vfour}[4]{\begin{pmatrix}#1\\
+ #2\\
+ #3\\
+ #4 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\vfive}[5]{\begin{pmatrix}#1\\
+ #2\\
+ #3\\
+ #4\\
+ #5 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\vsix}[6]{\begin{pmatrix}#1\\
+ #2\\
+ #3\\
+ #4\\
+ #5\\
+ #6 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\vseven}[7]{\begin{pmatrix}#1\\
+ #2\\
+ #3\\
+ #4\\
+ #5\\
+ #6\\
+ #7 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\veight}[8]{\begin{pmatrix}#1\\
+ #2\\
+ #3\\
+ #4\\
+ #5\\
+ #6\\
+ #7\\
+ #8 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\vnine}[9]{\begin{pmatrix}#1\\
+ #2\\
+ #3\\
+ #4\\
+ #5\\
+ #6\\
+ #7\\
+ #8\\
+ #9 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\mtwo}[4]{\begin{pmatrix}#1  &  #2\\
+ #3  &  #4 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\mthree}[9]{\begin{pmatrix}#1  &  #2  &  #3\\
+ #4  &  #5  &  #6\\
+ #7  &  #8  &  #9 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\dtwo}[4]{\begin{vmatrix}#1  &  #2\\
+ #3  &  #4 
+\end{vmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\dthree}[9]{\begin{vmatrix}#1  &  #2  &  #3\\
+ #4  &  #5  &  #6\\
+ #7  &  #8  &  #9 
+\end{vmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\diagzfour}[4]{\begin{pmatrix}#1  &  0  &  0  &  0\\
+ 0  &  #2  &  0  &  0\\
+ 0  &  0  &  #3  &  0\\
+ 0  &  0  &  0  &  #4 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\diagzfive}[5]{\begin{pmatrix}#1  &  0  &  0  &  0  &  0\\
+ 0  &  #2  &  0  &  0  &  0\\
+ 0  &  0  &  #3  &  0  &  0\\
+ 0  &  0  &  0  &  #4  &  0\\
+ 0  &  0  &  0  &  0  &  #5 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\diagfour}[4]{\begin{pmatrix}#1\\
+  &  #2\\
+  &   &  #3\\
+  &   &   &  #4 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\diagfive}[5]{\begin{pmatrix}#1\\
+  &  #2\\
+  &   &  #3\\
+  &   &   &  #4\\
+  &   &   &   &  #5 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\highfour}[7]{\begin{pmatrix}#1  &  #5\\
+  &  #2  &  #6\\
+  &   &  #3  &  #7\\
+  &   &   &  #4 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\highfive}[9]{\begin{pmatrix}#1  &  #6\\
+  &  #2  &  #7\\
+  &   &  #3  &  #8\\
+  &   &   &  #4  &  #9\\
+  &   &   &   &  #5 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\lowfour}[7]{\begin{pmatrix}#1\\
+ #5  &  #2\\
+  &  #6  &  #3\\
+  &   &  #7  &  #4 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\lowfive}[9]{\begin{pmatrix}#1\\
+ #6  &  #2\\
+  &  #7  &  #3\\
+  &   &  #8  &  #4\\
+  &   &   &  #9  &  #5 
+\end{pmatrix}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\rd}[2]{\frac{d#1}{d#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\rdd}[2]{\frac{d^{2}#1}{d#2^{2}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pd}[2]{\frac{\partial#1}{\partial#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\pdd}[2]{\frac{\partial^{2}#1}{\partial#2^{2}}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\Supp}[1]{\text{Supp}\pa#1}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset FormulaMacro
+\newcommand{\ti}[1]{#1\rightarrow\infty}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\tz}[1]{#1\rightarrow0}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+קיצורים ישנים לשם 
+\begin_inset Formula $\text{legacy}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\goodlim}[2]{\underset{#2}{\lim}#1}
+{\underset{#2}{\lim}#1}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\goodsum}[2]{\underset{#1}{\overset{#2}{\sum}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\explainup}[2]{\overset{\mathclap{\underset{\uparrow}{#2}}}{#1}}
+{\overset{\mathclap{\underset{\downarrow}{#2}}}{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\explain}[2]{\underset{\mathclap{\overset{\uparrow}{#2}}}{#1}}
+{\underset{\mathclap{\overset{\uparrow}{#2}}}{#1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\sab}[2]{\partial#1#2}
+{\partial#1#2}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\lstobject}[2]{#1_{1},\dots,#1_{#2}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\lstdef}[3]{\{#1\}_{#2=#3}^{\infty}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\inw}{\in\wholen}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\conj}[2]{#1#2#1^{-1}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\nleq}{\trianglelefteq}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\ngeq}{\trianglerighteq}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\kexplicit}{4\pi\epsilon_{0}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\eze}{\epsilon_{0}}
+{\epsilon_{0}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\mze}{\mu_{0}}
+{\mu_{0}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ugint}[2]{\overline{\gint{#1}{#2}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\dgint}[2]{\underline{\gint{#1}{#2}}}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\end_layout
+
+\begin_layout Standard
+לאחר אימון המסווג על קבוצת האימון ובדיקה על ידי קבוצת הבוחן הדיוק המתקבל
+ הינו 
+\begin_inset Formula $0.9469026548672567$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename misc/question1.png
+	lyxscale 60
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+דיוק עבור קבוצת הבוחן
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\end_layout
+
+\begin_layout Standard
+תוכן
+\end_layout
+
+\end_body
+\end_document
