@@ -30,15 +30,18 @@ class DecisionTreeClassifier(Classifier):
         super().__init__()
         self.root = None
         self.alg_fn = None
+        self.extra_args = None
 
-    def use_alg(self, alg_fn: callable):
+    def use_alg(self, alg_fn: callable, extra_args=None):
         """
         Set an algorithm to create the decision tree accordingly.
         The function must accept two inputs:
         1. X: 2D matrix of features.
         2. y: 1D vector of labels (ground truth).
+        3. Extra args for alg (Optional).
         """
         self.alg_fn = alg_fn
+        self.extra_args = extra_args
         return self
 
     def fit(self, X: np.ndarray, y: np.ndarray):
@@ -50,7 +53,10 @@ class DecisionTreeClassifier(Classifier):
         """
         if self.alg_fn is None:
             raise Exception(f"You must provide training algorithm first using `use_alg` method.")
-        self.root = self.alg_fn(X, y)
+        if self.extra_args:
+            self.root = self.alg_fn(X, y, **self.extra_args)
+        else:
+            self.root = self.alg_fn(X, y)
         return self
 
     def predict(self, X: np.ndarray):

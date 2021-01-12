@@ -1268,6 +1268,13 @@ status open
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 שאלה
 \family roman
@@ -1300,7 +1307,685 @@ status open
 \end_layout
 
 \begin_layout Standard
-תוכן
+הטענה נכונה.
+ תחילה נשים לב כי נורמליזציית 
+\begin_inset Formula $MinMax$
+\end_inset
+
+ היא למעשה הטרנספורמציה הבאה:
+\begin_inset Formula 
+\[
+g\left(v\right)=\frac{v-v_{min}}{v_{max}-v_{min}}=\frac{1}{v_{max}-v_{min}}\cdot v-\frac{v_{min}}{v_{max}-v_{min}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כאשר 
+\begin_inset Formula $v_{max}$
+\end_inset
+
+ ו- 
+\begin_inset Formula $v_{min}$
+\end_inset
+
+ הם קבועים הנובעים מהדאטה המתקבל.
+ נגזור ונקבל 
+\begin_inset Formula $g'\left(v\right)=\frac{1}{v_{max}-v_{min}}>0$
+\end_inset
+
+.
+ כלומר נורמליזציית 
+\begin_inset Formula $MinMax$
+\end_inset
+
+ היא 
+\series bold
+טרנספורמציה מונוטונית עולה ממש
+\series default
+ ולפיכך מתקיים כי 
+\begin_inset Formula $v_{1}>v_{2}$
+\end_inset
+
+ אם ורק אם 
+\begin_inset Formula $g\left(v_{1}\right)>g\left(v_{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+מכאן נשים לב כי אם 
+\begin_inset Formula $threshold=\frac{v_{1}+v_{2}}{2}$
+\end_inset
+
+ ואם נסמן ב- 
+\begin_inset Formula $\left(threshold\right)'$
+\end_inset
+
+ את ערך הסף המתקבל מהערכים המנורמלים אז מתקיים:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(threshold\right)'=\frac{g\left(v_{1}\right)+g\left(v_{2}\right)}{2}=\frac{\frac{v_{1}-v_{min}}{v_{max}-v_{min}}+\frac{v_{2}-v_{min}}{v_{max}-v_{min}}}{2}=\frac{\frac{v_{1}+v_{2}}{2}-v_{min}}{v_{max}-v_{min}}=\frac{theshold-v_{min}}{v_{max}-v_{min}}=g\left(threshold\right)
+\]
+
+\end_inset
+
+כלומר ערך הסף המתקבל מהערכים שעברו נרמול זהה להפעלת הנרמול על ערך הסף, ולכן
+ מתקיים:
+\begin_inset Formula 
+\[
+v_{1}<threshold<v_{2}\iff g\left(v_{1}\right)<g\left(threshold\right)<g\left(v_{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כעת, יהי 
+\begin_inset Formula $T$
+\end_inset
+
+ העץ המתקבל על ידי הפעלת 
+\begin_inset Formula $ID3$
+\end_inset
+
+ על הדאטה הלא מנורמל ויהי 
+\begin_inset Formula $T'$
+\end_inset
+
+ העץ המתקבל על ידי הפעלת 
+\begin_inset Formula $ID3$
+\end_inset
+
+ על הדאטה המנורמל.
+ נראה באינדוקציה על עומק העץ כי 
+\begin_inset Formula $T'$
+\end_inset
+
+ זהה ל- 
+\begin_inset Formula $T$
+\end_inset
+
+ כלומר יבחר בכל צומת את אותו מאפיין המתאים ב- 
+\begin_inset Formula $T$
+\end_inset
+
+ ואת אותו ערך סף )עד כדי נרמול(:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\bar under
+בסיס:
+\series default
+\bar default
+ עומק 
+\begin_inset Formula $0$
+\end_inset
+
+, כלומר 
+\begin_inset Formula $u$
+\end_inset
+
+, שהוא הצומת בעומק זה, הינו השורש: אם כמות הדוגמאות המתקבלת בצומת זו היא
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+0
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+אז לא תבחר תכונה ולכן הטענה נכונה באופן ריק.
+ אחרת, כמות הדוגמאות גדולה מ- 
+\begin_inset Formula $0$
+\end_inset
+
+: תהי 
+\begin_inset Formula $f$
+\end_inset
+
+ התכונה שנבחרה בצומת זה בעץ 
+\begin_inset Formula $T$
+\end_inset
+
+ על פי פונקציית בחירת המאפיינים ויהיו 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $v_{2}$
+\end_inset
+
+ שתי ערכים שונים שהתכונה 
+\begin_inset Formula $f$
+\end_inset
+
+ יכולה לקבל כך שערך הסף 
+\begin_inset Formula $threshold$
+\end_inset
+
+ הוא הממוצע שלהם.
+ נשים לב כי כיוון שמדובר בשורש אז הדוגמאות שמגיעות לצומת זה זהות בשני העצים.
+ עוד נשים לב כי ה- 
+\begin_inset Formula $threshold$
+\end_inset
+
+ המתאים בעץ 
+\begin_inset Formula $T'$
+\end_inset
+
+ הוא למעשה הפעלת הטרנספורמציה על ה- 
+\begin_inset Formula $threshold$
+\end_inset
+
+ ב- 
+\begin_inset Formula $T$
+\end_inset
+
+, ומשיקולים שהוסברו קודם נסיק כי אותן דוגמאות שהיו קטנות מ- 
+\begin_inset Formula $threshold$
+\end_inset
+
+ ב- 
+\begin_inset Formula $T$
+\end_inset
+
+ יהיו קטנות מ- 
+\begin_inset Formula $\left(threshold\right)'$
+\end_inset
+
+ ב- 
+\begin_inset Formula $T'$
+\end_inset
+
+ ולכן פיצול הדוגמאות בעצים, כאשר רוצים לחשב את תוספת המידע, יהיה זהה )ולכן
+ גם ההסתברויות(.
+ כמו כן, מכיוון שתוספת המידע תלויה גם בסיווג,
+\series bold
+ שאינו עובר נירמול
+\series default
+, נובע כי תוספת המידע תהיה זהה ולכן אותה תכונה 
+\begin_inset Formula $f$
+\end_inset
+
+ תבחר עם 
+\begin_inset Formula $\left(threshold\right)'=g\left(threshold\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\bar under
+צעד:
+\series default
+\bar default
+ נניח כי לכל צומת עד עומק 
+\begin_inset Formula $k$
+\end_inset
+
+ העץ 
+\begin_inset Formula $T$
+\end_inset
+
+ זהה לעץ 
+\begin_inset Formula $T'$
+\end_inset
+
+.
+ יהי 
+\begin_inset Formula $u$
+\end_inset
+
+ צומת כלשהו בעומק 
+\begin_inset Formula $k+1$
+\end_inset
+
+ ב- 
+\begin_inset Formula $T'$
+\end_inset
+
+.
+ מהנחת האינדוקציה נובע שעד צומת האב העץ 
+\begin_inset Formula $T$
+\end_inset
+
+ זהה לעץ 
+\begin_inset Formula $T'$
+\end_inset
+
+ עד כדי נרמול של ערך הסף, ולכן הדוגמאות המגיעות ל- 
+\begin_inset Formula $u$
+\end_inset
+
+ זהות לאלו שמגיעות למקבילו בעץ 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ לפיכך נוכל לחזור על שהוסבר בבסיס ולהסיק כי המאפיין שייבחר בשני העצים זהה
+ עם ערכי סף זהים עד כדי נרמול, ובכך סיימנו את ההוכחה.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\bar under
+מסקנה:
+\series default
+\bar default
+ נרמול של הדאטה אינו משפיע על בניית העץ ולכן גם לא משפיע על הדיוק על קבוצת
+ הבוחן )כמובן בתנאי שקבוצת הבוחן עוברת את 
+\series bold
+אותה טרנספורמציה מונוטונית עולה ממש
+\series default
+(.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\ $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+* הערה: ניתן אישור מהמתרגל האחראי על התרגיל לחרוג במעט מ- 
+\numeric on
+20
+\numeric off
+ שורות *
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\end_layout
+
+\begin_layout Standard
+גיזום של עץ החלטה מאפשר לקבל עץ סיווג קטן יותר, אשר בתקווה יוכל למזער את
+ תופעת ה- 
+\begin_inset Formula $Over-Fitting$
+\end_inset
+
+.
+ מטרתו של גיזום עץ החלטה היא למנוע התאמת יתר של המסווג לדאטה עליו אומן )סט
+ האימון(, כלומר תיתכן שגיאה גדולה יותר עבור דאטה זה, אך נוכל לגרום לכך שכל
+ החלטה, אשר מתבצעת בעלים, תסתמך על יותר דאטה ובכך אולי תגרום לדיוק גבוה
+ יותר על 
+\series bold
+דוגמה חדשה שלא נראתה קודם לכן
+\series default
+.
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename misc/question3.png
+	lyxscale 60
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+דיוק ממוצע כתלות בערך של 
+\begin_inset Formula $M$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ניתן לראות שהגרף הנ
+\begin_inset Quotes erd
+\end_inset
+
+ל הינו במגמה יורדת, כלומר 
+\series bold
+באופן כללי
+\series default
+ ככל ש- 
+\begin_inset Formula $M$
+\end_inset
+
+ יותר קטן כך הדיוק הממוצע גבוה יותר.
+ בפרט ניתן לראות כי הדיוק הממוצע המקסימלי מתקבל עבור 
+\begin_inset Formula $M=1$
+\end_inset
+
+ והוא 
+\begin_inset Formula $0.9469026548672567$
+\end_inset
+
+.
+ מהתבוננות בגרף אנו רואים כי הגיזום למעשה רק פוגע ביכולת ההכללה של המסווג,
+ אולי מכיוון שסט האימון קטן יחסית )כ- 
+\begin_inset Formula $350$
+\end_inset
+
+ דוגמאות בלבד( ולכן העץ 
+\begin_inset Quotes eld
+\end_inset
+
+קטן מספיק
+\begin_inset Quotes erd
+\end_inset
+
+ גם ללא גיזום.
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\end_layout
+
+\begin_layout Standard
+כפי שניתן לראות בסעיף הקודם, הערך של 
+\begin_inset Formula $M$
+\end_inset
+
+ הנותן דיוק מקסימלי הינו 
+\begin_inset Formula $M=1$
+\end_inset
+
+, כלומר ללא גיזום כלל, ולכן הדיוק ישאר 
+\begin_inset Formula $0.9469026548672567$
+\end_inset
+
+ כפי שהיה מקודם.
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+4
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\end_layout
+
+\begin_layout Standard
+עבור הרצת אלגוריתם 
+\begin_inset Formula $ID3$
+\end_inset
+
+ עם גיזום מוקדם ועם פונקציית ההפסד המוזכרת בשאלה ערך ה- 
+\begin_inset Formula $M$
+\end_inset
+
+ המתקבל הינו 
+\begin_inset Formula $M=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+לאחר אימון המודל עם ערך ה- 
+\begin_inset Formula $M$
+\end_inset
+
+ שנמצא על כל סט האימון, השגיאה המתקבלת על סט הבוחן הינה 
+\begin_inset Formula $0.02123893805309735$
+\end_inset
+
+.
 \end_layout
 
 \end_body
