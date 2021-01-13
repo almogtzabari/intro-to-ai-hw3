@@ -2893,7 +2893,52 @@ h_{truth}\left(x_{i}\right)=h_{ID3}\left(x_{i}\right)=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-**להשלים**
+בשאלה הנ
+\begin_inset Quotes erd
+\end_inset
+
+ל אנו נדרשים לממש את האלגוריתם 
+\begin_inset Formula $knn-decision-tree$
+\end_inset
+
+ ולשם כך אנו נדרשים למצוא ערכים 
+\begin_inset Quotes eld
+\end_inset
+
+טובים
+\begin_inset Quotes erd
+\end_inset
+
+ לפרמטרים 
+\begin_inset Formula $N,K,p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+על מנת למצוא ערכים אלו ביצעתי 
+\begin_inset Formula $5-Cross-Validation$
+\end_inset
+
+ מספר פעמים, כאשר בכל פעם בחרתי את כל הפרמטרים 
+\begin_inset Formula $N,K,p$
+\end_inset
+
+ באקראי, וזאת מכיוון שזמן הריצה לבדיקת פרמטרים גדולה יחסית ולכן מעבר על
+ הערכים האפשריים בצורת 
+\begin_inset Formula $Grid$
+\end_inset
+
+ לדעתי פחות מתאימה.
+\end_layout
+
+\begin_layout Standard
+אחת מתוצאות הדיוק שהתקבלו הינה 
+\begin_inset Formula $0.9734513274336283$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection*

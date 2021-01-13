@@ -26,9 +26,13 @@ class DecisionTreeClassifier(Classifier):
             y_hat[bigger_equal_indices] = bigger_equal_res
             return y_hat
 
-    def __init__(self):
+        @property
+        def height(self):
+            return 1 + max(self.sub_trees[0].height, self.sub_trees[1].height) if len(self.sub_trees) > 0 else 0
+
+    def __init__(self, root=None):
         super().__init__()
-        self.root = None
+        self.root = root
         self.alg_fn = None
         self.extra_args = None
 
@@ -68,3 +72,7 @@ class DecisionTreeClassifier(Classifier):
         if self.root is None:
             raise Exception(f"You must fit the model first!")
         return self.root.predict(X)
+
+    @property
+    def height(self):
+        return self.root.height

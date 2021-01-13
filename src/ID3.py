@@ -4,8 +4,6 @@ from utils import *
 from sklearn.model_selection import KFold
 from typing import Sequence
 
-ID = 312433576
-N_SPLITS = 5
 DecisionTreeNode = DecisionTreeClassifier.DecisionTreeNode
 
 
