@@ -1898,6 +1898,13 @@ status open
  כפי שהיה מקודם.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection*
 שאלה
 \family roman
@@ -1986,6 +1993,1008 @@ status open
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\end_layout
+
+\begin_layout Standard
+**להשלים**
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+3
+\end_layout
+
+\begin_layout Standard
+**להשלים**
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+5
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+א
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename misc/question5_1.png
+	lyxscale 60
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+סט אימון ומסווג מטרה
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נשים לב כי מקסום תוספת המידע מתקבל עבור 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+ עם 
+\begin_inset Formula $threshold=3$
+\end_inset
+
+ או עבור 
+\begin_inset Formula $v_{2}$
+\end_inset
+
+ עם 
+\begin_inset Formula $threshold=2$
+\end_inset
+
+, כאשר שניהם יוצרים הפרדה מקסימלית ולכן ייבחר 
+\begin_inset Formula $v_{2}$
+\end_inset
+
+ כי יש לו )למאפיין( אינדקס גדול יותר.
+ לפיכך המסווג יהיה:
+\begin_inset Formula 
+\[
+h_{truth}\left(x_{i}\right)=h_{ID3}\left(x_{i}\right)=\begin{cases}
+1 & v_{2,i}<2\\
+0 & 2\leq v_{2,i}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+כמו כן, ניתן לראות כי הדגימה 
+\begin_inset Formula $"?"$
+\end_inset
+
+ מסט הבוחן הממוקמת ב- 
+\begin_inset Formula $\left(-0.4,2.2\right)$
+\end_inset
+
+ אמורה להיות שלילית שכן היא מעל הישר המפריד, ומתקיים:
+\end_layout
+
+\begin_layout Itemize
+עבור 
+\begin_inset Formula $K=1$
+\end_inset
+
+ הדגימה הקרובה ביותר היא 
+\begin_inset Formula $\left(1,1\right)$
+\end_inset
+
+ שסימנה חיובי ולכן תסווג כחיובית - שגיאת סיווג.
+\end_layout
+
+\begin_layout Itemize
+עבור 
+\begin_inset Formula $K=2$
+\end_inset
+
+ הדגימות הקרובות ביותר הן 
+\begin_inset Formula $\left(1,1\right)$
+\end_inset
+
+ ו- 
+\begin_inset Formula $\left(2,1\right)$
+\end_inset
+
+ שסימנן חיובי ולכן תסווג כחיובית - שגיאת סיווג.
+\end_layout
+
+\begin_layout Itemize
+עבור 
+\begin_inset Formula $K=3$
+\end_inset
+
+ הדגימות הקרובות ביותר הן כל סט האימון, כאשר רובו מסומן חיובי, ולכן תסווג
+ כחיובית - שגיאת סיווג.
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ב
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename misc/question5_2.png
+	lyxscale 60
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+סט אימון, מסווג מטרה ומסווג מ- 
+\begin_inset Formula $ID3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נבחר 
+\begin_inset Formula $K=1$
+\end_inset
+
+.
+ כמו כן, בתמונה הנ
+\begin_inset Quotes erd
+\end_inset
+
+ל ניתן לראות את מסווג המטרה )
+\begin_inset Formula $\text{Ground Truth}$
+\end_inset
+
+( בקו אפור המקיים:
+\begin_inset Formula 
+\[
+h_{truth}\left(x_{i}\right)=\begin{cases}
+1 & v_{1,i}<v_{2,i}\\
+0 & v_{2,i}\leq v_{1,i}
+\end{cases}
+\]
+
+\end_inset
+
+כמו כן, עבור סט האימון הנ
+\begin_inset Quotes erd
+\end_inset
+
+ל, ישר זה הוא גם המקום הגאומטרי של כל הנקודות שמרחקן זהה משתי הדגימות בסט
+ האימון, ולכן אם דגימה מסוימת מסט הבוחן נמצאת מעל ישר זה, למשל ה- 
+\begin_inset Formula $"?"$
+\end_inset
+
+ הנמצא ב- 
+\begin_inset Formula $\left(2,3\right)$
+\end_inset
+
+, אז היא קרובה יותר ל- 
+\begin_inset Formula $"+"$
+\end_inset
+
+ שנמצא ב- 
+\begin_inset Formula $\left(1,2\right)$
+\end_inset
+
+ ולכן תסווג כחיובית לפי 
+\begin_inset Formula $1-NN$
+\end_inset
+
+.
+ באופן דומה אם היא מתחת לישר זה, למשל ה- 
+\begin_inset Formula $"?"$
+\end_inset
+
+ הנמצא ב- 
+\begin_inset Formula $\left(4,3\right)$
+\end_inset
+
+, אז היא קרובה יותר ל- 
+\begin_inset Formula $"-"$
+\end_inset
+
+ שנמצא ב- 
+\begin_inset Formula $\left(2,1\right)$
+\end_inset
+
+ ולכן תסווג כשלילית לפי 
+\begin_inset Formula $1-NN$
+\end_inset
+
+.
+ עוד נציין כי אם היא נמצאת 
+\series bold
+על
+\series default
+ 
+\series bold
+הישר
+\series default
+ אז מרחקיה שווים ולכן תסווג כ- 
+\begin_inset Formula $"-"$
+\end_inset
+
+ )כי מסתכלים קודם על הדגימה מסט האימון שעבורה 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+ מקסימלי(.
+ מכאן נסיק כי כל דוגמה שתתקבל מסט בוחן כלשהו תסווג נכון על ידי 
+\begin_inset Formula $1-NN$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+מצד שני, עבור סט האימון הנ
+\begin_inset Quotes erd
+\end_inset
+
+ל אלגוריתם ה- 
+\begin_inset Formula $ID3$
+\end_inset
+
+ יחזיר את המסווג הבא )כל מאפיין יאפשר הפרדה מלאה אך האלגוריתם יבחר את המאפיין
+ עם האינדקס הגדול יותר(:
+\begin_inset Formula 
+\[
+h_{ID3}\left(x_{i}\right)=\begin{cases}
+1 & 1.5\leq v_{2,i}\\
+0 & v_{2,i}<1.5
+\end{cases}
+\]
+
+\end_inset
+
+לכן, דוגמה הנמצאת ב- 
+\begin_inset Formula $"?"$
+\end_inset
+
+ שממוקם ב- 
+\begin_inset Formula $\left(0,1\right)$
+\end_inset
+
+ תסווג על ידי העץ כשלילית בעוד שהיא למעשה חיובית.
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ג
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename misc/question5_3.png
+	lyxscale 60
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+סט אימון, מסווג מטרה ומסווג מ- 
+\begin_inset Formula $ID3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נבחר 
+\begin_inset Formula $K=1$
+\end_inset
+
+.
+ כמו כן, בתמונה הנ
+\begin_inset Quotes erd
+\end_inset
+
+ל ניתן לראות את מסווג המטרה )
+\begin_inset Formula $\text{Ground Truth}$
+\end_inset
+
+( בקו אפור המקיים:
+\begin_inset Formula 
+\[
+h_{truth}\left(x_{i}\right)=\begin{cases}
+1 & 1.5\leq v_{2,i}\\
+0 & Otherwise
+\end{cases}
+\]
+
+\end_inset
+
+כמו כן, עבור סט האימון הנ
+\begin_inset Quotes erd
+\end_inset
+
+ל נקבל שהמסווג המתקבל מ- 
+\begin_inset Formula $ID3$
+\end_inset
+
+ הינו:
+\begin_inset Formula 
+\[
+h_{ID3}\left(x_{i}\right)=\begin{cases}
+1 & 1\leq v_{2,i}\\
+0 & v_{2,i}<1
+\end{cases}
+\]
+
+\end_inset
+
+כעת, עבור הדגימה מסט הבוחן הנמצאת ב- 
+\begin_inset Formula $"?"$
+\end_inset
+
+ הממוקם ב- 
+\begin_inset Formula $\left(1,1.2\right)$
+\end_inset
+
+ מתקיים:
+\end_layout
+
+\begin_layout Itemize
+תסווג ב- 
+\begin_inset Formula $"+"$
+\end_inset
+
+ על ידי 
+\begin_inset Formula $h_{ID3}$
+\end_inset
+
+ כי 
+\begin_inset Formula $1\leq1.2=v_{2,i}$
+\end_inset
+
+ למרות שהיא בפועל אמורה להיות 
+\begin_inset Formula $"-"$
+\end_inset
+
+ - שגיאת סיווג.
+\end_layout
+
+\begin_layout Itemize
+תסווג ב- 
+\begin_inset Formula $"+"$
+\end_inset
+
+ על ידי 
+\begin_inset Formula $1-NN$
+\end_inset
+
+ כי הדגימה הקרובה מסט האימון היא ה- 
+\begin_inset Formula $"+"$
+\end_inset
+
+ הנמצא ב- 
+\begin_inset Formula $\left(1,2\right)$
+\end_inset
+
+ למרות שהיא בפועל אמורה להיות 
+\begin_inset Formula $"-"$
+\end_inset
+
+ - שגיאת סיווג.
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ד
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename misc/question5_4.png
+	lyxscale 60
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+סט אימון, מסווג מטרה ומסווג מ- 
+\begin_inset Formula $ID3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+נבחר 
+\begin_inset Formula $K=1$
+\end_inset
+
+.
+ כמו כן, בתרשים הנ
+\begin_inset Quotes erd
+\end_inset
+
+ל ניתן לראות כי מתקיים:
+\begin_inset Formula 
+\[
+h_{truth}\left(x_{i}\right)=h_{ID3}\left(x_{i}\right)=\begin{cases}
+1 & 1\leq v_{2,i}\\
+0 & v_{2,i}<1
+\end{cases}
+\]
+
+\end_inset
+
+נשים לב שעבור דגימה מסוימת מסט בוחן כלשהו מתקיים אחד מהבאים:
+\end_layout
+
+\begin_layout Itemize
+אם היא נמצאת מעל ישר זה אז היא חיובית )
+\begin_inset Formula $\text{Ground Truth}$
+\end_inset
+
+( והיא מקיימת 
+\begin_inset Formula $1<v_{2,i}$
+\end_inset
+
+ ולכן תסווג ב- 
+\begin_inset Formula $"+"$
+\end_inset
+
+ הן על ידי 
+\begin_inset Formula $h_{ID3}$
+\end_inset
+
+ והן על ידי 
+\begin_inset Formula $1-NN$
+\end_inset
+
+ )כי אז היא קרובה יותר ל- 
+\begin_inset Formula $"+"$
+\end_inset
+
+ שנמצא ב- 
+\begin_inset Formula $\left(1,2\right)$
+\end_inset
+
+(.
+\end_layout
+
+\begin_layout Itemize
+אם היא נמצאת מתחת לישר זה אז היא שלילית )
+\begin_inset Formula $\text{Ground Truth}$
+\end_inset
+
+( והיא מקיימת 
+\begin_inset Formula $v_{2,i}<1$
+\end_inset
+
+ ולכן תסווג ב- 
+\begin_inset Formula $"-"$
+\end_inset
+
+ הן על ידי 
+\begin_inset Formula $h_{ID3}$
+\end_inset
+
+ והן על ידי 
+\begin_inset Formula $1-NN$
+\end_inset
+
+ )כי אז היא קרובה יותר ל- 
+\begin_inset Formula $"-"$
+\end_inset
+
+ שנמצא ב- 
+\begin_inset Formula $\left(1,0\right)$
+\end_inset
+
+(.
+\end_layout
+
+\begin_layout Itemize
+אם היא נמצאת 
+\series bold
+על
+\series default
+ הישר אז היא חיובית )
+\begin_inset Formula $\text{Ground Truth}$
+\end_inset
+
+( והיא מקיימת 
+\begin_inset Formula $v_{2,i}=1$
+\end_inset
+
+ ולכן תסווג ב- 
+\begin_inset Formula $"+"$
+\end_inset
+
+ הן על ידי 
+\begin_inset Formula $h_{ID3}$
+\end_inset
+
+ והן על ידי 
+\begin_inset Formula $1-NN$
+\end_inset
+
+ )כי אז המרחקים שווים וגם 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+ שווים ולכן נתייחס קודם לדגימה שעבורה 
+\begin_inset Formula $v_{2}$
+\end_inset
+
+ מקסימלי וזו דגימה חיובית(.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+6
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\end_layout
+
+\begin_layout Standard
+**להשלים**
+\end_layout
+
+\begin_layout Subsection*
+שאלה
+\family roman
+\series bold
+\shape up
+\size larger
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+7
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
+\end_layout
+
+\begin_layout Standard
+**להשלים**
+\end_layout
+
+\begin_layout Subsubsection*
+סעיף
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\end_layout
+
+\begin_layout Standard
+**להשלים**
 \end_layout
 
 \end_body
