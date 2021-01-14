@@ -50,11 +50,11 @@ class KNNForestClassifier(Classifier):
     def predict(self, X):
         if len(self.trees) == 0:
             raise Exception(f"You have to fit the model first!")
-        closest_trees_per_sample = self._get_closest_trees(X)
+        k_closest_tree_ids_per_sample = self._get_k_closest_tree_ids(X)
         results = np.empty((len(X), len(self.trees)), dtype=self._dtype)
         y_hat = np.empty(len(X), dtype=self._dtype)
         for tree_id, tree in enumerate(self.trees):
-            samples_for_this_tree = np.where(closest_trees_per_sample == tree_id)[
+            samples_for_this_tree = np.where(k_closest_tree_ids_per_sample == tree_id)[
                 0]  # Choose all samples that need to be predicted on this tree
             if len(samples_for_this_tree) > 0:
                 tree_results = tree.predict(X[samples_for_this_tree])
@@ -63,11 +63,10 @@ class KNNForestClassifier(Classifier):
         y_hat[np.sum(results == "M", axis=-1) > np.sum(results == "B", axis=-1)] = "M"  # Majority vote
         return y_hat
 
-    def _get_closest_trees(self, X):
+    def _get_k_closest_tree_ids(self, X):
         """ Returns K closest trees for each sample in X."""
         distances = euclidean_distances(X, self.centroids)  # Distances from each sample to all trees
         ordered_trees_id = np.argsort(distances)[:, :self.K]  # indices of K closest trees
-        # return np.take(self.trees, ordered_trees_id)
         return ordered_trees_id
 
 
