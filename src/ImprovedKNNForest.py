@@ -19,7 +19,8 @@ class ImprovedKNNForestClassifier(KNNForestClassifier):
 
 
 def find_best_params(num_trails: int, return_score: bool = False):
-    print(f"Running search for best params (N, K, p).")
+    print(f"Searching for best params for ImprovedKNNForestClassifier.")
+    print(f"Looking for best (N, K, p, T).")
     print(f"Trying {num_trails} sets of different params.")
     # Get random params (N, K, p, T)
     params = [get_random_params_for_improved_knn_forest() for _ in range(num_trails)]
@@ -28,14 +29,14 @@ def find_best_params(num_trails: int, return_score: bool = False):
     X_train, y_train = get_dataset(DataSet.TRAIN_SET)
 
     for trail_id, (N, K, p, T) in enumerate(params):
-        print(f"\nRunning cross-validation for params set {trail_id + 1} out of {num_trails}.\nParams are (N, K, p) = ({N}, {K}, {p:.2f})")
+        print(f"\nRunning cross-validation for params set {trail_id + 1} out of {num_trails}.\nParams are (N, K, p, T) = ({N}, {K}, {p:.2f}, {T:.2f})")
         model = ImprovedKNNForestClassifier(N, K, p, T)
         avg_score = k_cross_validation(model, X_train, y_train, classification_rate)
         avg_scores.append(avg_score)
         print(f"Average validation score for these params: {np.average(avg_score)}\n")
 
     best_params = params[int(np.argmax(avg_scores))]
-    print(f"Best params found: (N, K, p) = ({best_params[0]}, {best_params[1]}, {best_params[2]:.2f})")
+    print(f"Best params found: (N, K, p, T) = ({best_params[0]}, {best_params[1]}, {best_params[2]:.2f}, {best_params[3]:.2f})")
     print(f"Average score for best params is: {np.max(avg_scores)}")
     if return_score:
         return best_params, np.max(avg_scores)

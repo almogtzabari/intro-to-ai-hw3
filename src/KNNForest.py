@@ -28,6 +28,7 @@ class KNNForestClassifier(Classifier):
         self.p = p
         self.trees = []
         self.centroids = None
+        self._stds = None
         KNNForestClassifier.n_classifiers += 1
 
     def fit(self, X, y):
@@ -38,6 +39,8 @@ class KNNForestClassifier(Classifier):
 
         # Build trees
         centroids = []
+        trees = []
+        stds = []
         for tree_id in range(self.N):
             indices = sample_without_replacement(
                 n_population=len(X),
@@ -45,9 +48,15 @@ class KNNForestClassifier(Classifier):
                 method="reservoir_sampling",
                 random_state=ID + KNNForestClassifier.n_classifiers + tree_id
             )  # Choose train indices
-            self.trees.append(DecisionTreeClassifier().use_alg(ID3).fit(X[indices], y[indices]))
-            centroids.append(X[indices].mean(axis=0))
+            mean = X[indices].mean(axis=0)
+            std = np.sqrt(np.mean(((X[indices] - mean) ** 2), axis=0))
+            trees.append(DecisionTreeClassifier().use_alg(ID3).fit(std_normalization(X[indices], mean, std), y[indices]))
+            centroids.append(mean)
+            stds.append(std)
+
         self.centroids = np.array(centroids)
+        self._stds = np.array(stds)
+        self.trees = trees
         return self
 
     def predict(self, X):
@@ -59,7 +68,7 @@ class KNNForestClassifier(Classifier):
         # Calculate scores
         scores = []
         for tree_id, tree in enumerate(self.trees):
-            scores.append(tree.predict(X))
+            scores.append(tree.predict(std_normalization(X, self.centroids[tree_id], self._stds[tree_id])))
         scores = np.array(scores).T  # For each sample there is a result for each tree (shape = [N_SAMPLES, N_TREES]).
 
         # Apply weights
@@ -84,7 +93,8 @@ class KNNForestClassifier(Classifier):
 
 
 def find_best_params(num_trails: int, return_score: bool = False):
-    print(f"Running search for best params (N, K, p).")
+    print(f"Searching for best params for KNNForestClassifier.")
+    print(f"Looking for best (N, K, p).")
     print(f"Trying {num_trails} sets of different params.")
     # Get random params (N, K, p)
     params = [get_random_params_for_knn_forest() for _ in range(num_trails)]

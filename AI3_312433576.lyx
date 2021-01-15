@@ -2934,8 +2934,8 @@ h_{truth}\left(x_{i}\right)=h_{ID3}\left(x_{i}\right)=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-אחת מתוצאות הדיוק שהתקבלו הינה 
-\begin_inset Formula $0.9734513274336283$
+תוצאת הדיוק המתקבלת על סט האימון הינה 
+\begin_inset Formula $0.9646017699115044$
 \end_inset
 
 .
@@ -3004,7 +3004,154 @@ h_{truth}\left(x_{i}\right)=h_{ID3}\left(x_{i}\right)=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-**להשלים**
+נציע את השיפור הבא:
+\end_layout
+
+\begin_layout Standard
+נציג פרמטר חדש של טמפרטורה שיסומן ב- 
+\begin_inset Formula $T$
+\end_inset
+
+ אותו נכוונן בהמשך, ונבצע את הסיווג על סמך הועדה של 
+\begin_inset Formula $K$
+\end_inset
+
+ העצים הקרובים ביותר ל- 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ כאשר כל עץ מקבל משקל בהתאם למידת הקירבה של הסנטרואיד שלו ל- 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ ועל סמך 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ כלומר בהינתן דגימה 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ מסט הבוחן שלא נראתה קודם לכן נקבע את סיווגה באופן הבא:
+\begin_inset Formula 
+\[
+\hat{y_{i}}=h\left(x_{i}\right)=sign\left(\sum_{\text{j\ensuremath{\in}k\_closest\_trees\_to\_x\_i}}w_{j}\cdot predict\left(\text{tree\_j},x_{i}\right)\right)
+\]
+
+\end_inset
+
+כאשר:
+\begin_inset Formula 
+\[
+w_{j}=\frac{e^{\frac{d\left(x_{i},j\right)}{T}}}{\sum_{\text{\ensuremath{l\in}k\_closest\_trees\_to\_x\_i}}e^{\frac{d\left(x_{i},l\right)}{T}}}
+\]
+
+\end_inset
+
+וכאשר:
+\begin_inset Formula 
+\[
+d\left(x_{i},l\right)=\begin{cases}
+-m & m\leq K,\ tree_{l}\text{ is the `m` closest to \ensuremath{x_{i}}}\\
+-\infty & Otherwise
+\end{cases}
+\]
+
+\end_inset
+
+בכך למעשה נוכל לשקלל את התוצאות של 
+\begin_inset Formula $K$
+\end_inset
+
+ העצים הקרובים ביותר, כאשר ניתן משקל גדול יותר לעצים שהסנטרואיד שלהם יותר
+ קרוב ל- 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+עוד נציין כי הטמפרטורה, )נציין כי 
+\begin_inset Formula $T>0$
+\end_inset
+
+(, שולטת על רמת ה
+\begin_inset Quotes erd
+\end_inset
+
+עדיפות
+\begin_inset Quotes erd
+\end_inset
+
+ שניתן לכל עץ.
+ כך למשל, עבור 
+\begin_inset Formula $T$
+\end_inset
+
+ גדול מאוד נקבל:
+\begin_inset Formula 
+\[
+w_{j}=\frac{e^{\frac{d\left(x_{i},j\right)}{T}}}{\sum_{\text{\ensuremath{l\in}k\_closest\_trees\_to\_x\_i}}e^{\frac{d\left(x_{i},l\right)}{T}}}\approx\frac{e^{0}}{\sum_{\text{\ensuremath{l\in}k\_closest\_trees\_to\_x\_i}}e^{0}}=\frac{1}{K}
+\]
+
+\end_inset
+
+ כלומר עבור 
+\begin_inset Formula $T$
+\end_inset
+
+ גדול נקבל שהמשקלים זהים - כלומר העץ הקרוב ביותר יקבל עדיפות אפסית אל מול
+ שאר 
+\begin_inset Formula $K-1$
+\end_inset
+
+ העצים הקרובים.
+ 
+\end_layout
+
+\begin_layout Standard
+באופן דומה עבור 
+\begin_inset Formula $T$
+\end_inset
+
+ קרוב ל- 
+\begin_inset Formula $0$
+\end_inset
+
+ נקבל:
+\begin_inset Formula 
+\[
+w_{j}=\frac{e^{\frac{d\left(x_{i},j\right)}{T}}}{\sum_{\text{\ensuremath{l\in}k\_closest\_trees\_to\_x\_i}}e^{\frac{d\left(x_{i},l\right)}{T}}}\approx\frac{\mathbb{I}\left[j\text{ is the closest tree to \ensuremath{x_{i}}}\right]}{0+...+1+...+0}=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\mathbb{I}\left[j\text{ is the closest tree to \ensuremath{x_{i}}}\right]=\begin{cases}
+1 & j\text{ is the closest tree to \ensuremath{x_{i}}}\\
+0 & j\text{ is not the closest tree to \ensuremath{x_{i}}}
+\end{cases}
+\]
+
+\end_inset
+
+כלומר עבור 
+\begin_inset Formula $T$
+\end_inset
+
+ קטן מאוד אנו נותנים עדיפות 
+\begin_inset Quotes eld
+\end_inset
+
+אינסופית
+\begin_inset Quotes erd
+\end_inset
+
+ לעץ הקרוב ביותר - כלומר העץ הקרוב ביותר הוא היחיד שמשפיע.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -3039,7 +3186,23 @@ h_{truth}\left(x_{i}\right)=h_{ID3}\left(x_{i}\right)=\begin{cases}
 \end_layout
 
 \begin_layout Standard
-**להשלים**
+באופן דומה לשאלות הקודמות חיפוש הפרמטרים 
+\begin_inset Formula $N,K,p,T$
+\end_inset
+
+ בוצע על ידי הגרלת ערכים רנדומליים ובדיקתם בעזרת 
+\begin_inset Formula $Cross-Validation$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+תוצאת הדיוק המתקבלת על סט האימון הינה 
+\begin_inset Formula $0.9911504424778761$
+\end_inset
+
+.
 \end_layout
 
 \end_body

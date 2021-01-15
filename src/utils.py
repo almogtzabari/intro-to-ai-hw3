@@ -103,3 +103,7 @@ def k_cross_validation(model, X: np.ndarray, y: np.ndarray, evaluate_fn: callabl
         print(f"Validation {i + 1} out of {len(train_indices)}, score: {scores[-1]}")
 
     return np.average(scores)
+
+
+def std_normalization(X: np.ndarray, mean: np.ndarray, std: np.ndarray):
+    return (X - mean) / std
