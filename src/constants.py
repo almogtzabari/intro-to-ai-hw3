@@ -1,5 +1,5 @@
 import os
-from enum import Enum
+from enum import IntEnum
 
 
 ## Constants
@@ -16,9 +16,19 @@ N_MIN = 5
 N_MAX = 30
 K_MIN = N_MIN
 K_MAX = N_MAX
-BEST_PARAMS = (16, 7, 0.49)
+# BEST_KNN_FOREST_PARAMS = (16, 7, 0.49)
+BEST_KNN_FOREST_PARAMS = (8, 5, 0.51)
+
+TEMPERATURE_MIN = 1
+TEMPERATURE_MAX = 10
+BEST_IMPROVED_KNN_FOREST_PARAMS = (5, 3, 0.51, 1)
 
 
-class DataSet(Enum):
+class DataSet(IntEnum):
     TRAIN_SET = 0
     TEST_SET = 1
+
+
+class Classification(IntEnum):
+    HEALTHY = -1  # This is B
+    SICK = 1  # This is M

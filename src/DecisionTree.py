@@ -1,5 +1,5 @@
 from Classifier import Classifier
-import numpy as np
+from utils import *
 
 
 class DecisionTreeClassifier(Classifier):
@@ -8,11 +8,12 @@ class DecisionTreeClassifier(Classifier):
             self.feature = feature_name
             self.threshold = feature_threshold
             self.sub_trees = sub_tress
-            self.label = label
+            self._label = label
+            self.label = Classification(label)
 
         def predict(self, X: np.ndarray):
             if len(self.sub_trees) == 0:
-                return np.full(len(X), self.label)
+                return np.full(len(X), self._label)
 
             smaller_indices = (X.T[self.feature] < self.threshold)
             smaller_res = self.sub_trees[0].predict(X[smaller_indices])
@@ -21,7 +22,7 @@ class DecisionTreeClassifier(Classifier):
             bigger_equal_res = self.sub_trees[1].predict(X[bigger_equal_indices])
 
             # Merge results
-            y_hat = np.empty(len(X), dtype=type(self.label))
+            y_hat = np.empty(len(X))
             y_hat[smaller_indices] = smaller_res
             y_hat[bigger_equal_indices] = bigger_equal_res
             return y_hat

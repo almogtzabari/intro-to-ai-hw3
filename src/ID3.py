@@ -1,7 +1,6 @@
+from utils import *
 import argparse
 from DecisionTree import DecisionTreeClassifier
-from utils import *
-from sklearn.model_selection import KFold
 from typing import Sequence
 
 DecisionTreeNode = DecisionTreeClassifier.DecisionTreeNode
@@ -76,53 +75,31 @@ def TDIDT(X, y, default, feature_select_fn: callable, M=None):
     return DecisionTreeNode(feature, threshold, [smaller_sub_tree, bigger_equal_sub_tree], c)
 
 
-def find_best_M(X_train: np.ndarray, y_train: np.ndarray, M_values: Sequence[int], evaluate_fn: callable,
-                minimize: bool = False, return_score: bool = False):
-    avg_score = []
+def find_best_M(M_values: Sequence[int], evaluate_fn: callable, minimize: bool = False, return_score: bool = False):
+    X_train, y_train = get_dataset(data_set=DataSet.TRAIN_SET)
+    avg_scores = []
 
-    # Split indices
-    train_indices = []
-    val_indices = []
-    for train_idx, val_idx in KFold(n_splits=N_SPLITS, shuffle=True, random_state=ID).split(X_train):
-        train_indices.append(train_idx)
-        val_indices.append(val_idx)
-
-    # Run K-Fold-Cross-Validation
     for M in M_values:
         print(f"Running on M={M}")
-        score = []
-        for i in range(len(train_indices)):
-            # Train model with value M
-            train_idx = train_indices[i]
-            curr_X_train = X_train[train_idx]
-            curr_y_train = y_train[train_idx]
-            dt = DecisionTreeClassifier().use_alg(ID3_with_early_pruning, extra_args={"M": M}).fit(curr_X_train,
-                                                                                                   curr_y_train)
-
-            # Validate
-            val_idx = val_indices[i]
-            curr_X_val = X_train[val_idx]
-            curr_y_val = y_train[val_idx]
-            curr_y_hat = dt.predict(curr_X_val)
-            score.append(evaluate_fn(curr_y_hat, curr_y_val))
-        avg_score.append(np.average(score))
+        model = DecisionTreeClassifier().use_alg(ID3_with_early_pruning, extra_args={"M": M})
+        avg_score = k_cross_validation(model, X_train, y_train, evaluate_fn)
+        avg_scores.append(np.average(avg_score))
 
     if minimize:
-        best_M = M_values[int(np.argmin(np.array(avg_score)))]
+        best_M = M_values[int(np.argmin(np.array(avg_scores)))]
     else:
-        best_M = M_values[int(np.argmax(np.array(avg_score)))]
+        best_M, best_score = M_values[int(np.argmax(np.array(avg_scores)))]
     if return_score:
-        return best_M, avg_score
-    else:
-        return best_M
+        return best_M, avg_scores
+    return best_M
 
 
 def experiment():
     M_values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 25, 30]
     X_train, y_train = get_dataset(data_set=DataSet.TRAIN_SET)
 
-    best_M, avg_accuracy = find_best_M(X_train, y_train, M_values, classification_rate, minimize=False, return_score=True)
-    plot_graph(M_values, avg_accuracy, "Average Accuracy per M", "M", "Average Accuracy")
+    best_M, avg_accuracies = find_best_M(M_values, classification_rate, minimize=False, return_score=True)
+    plot_graph(M_values, avg_accuracies, "Average Accuracy per M", "M", "Average Accuracy")
 
     # Train the model on the entire train-set
     dt = DecisionTreeClassifier().use_alg(ID3_with_early_pruning, extra_args={"M": best_M}).fit(X_train, y_train)
