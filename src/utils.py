@@ -68,8 +68,10 @@ def ten_times_penalty(y_hat: np.ndarray, y: np.ndarray):
     if len(y_hat) == 0:
         return 0
 
-    fp = (y_hat == int(Classification.SICK)) * (y == int(Classification.HEALTHY))  # Healthy people accidentally classified as sick (positive).
-    fn = (y_hat == int(Classification.HEALTHY)) * (y == int(Classification.SICK))  # Sick people accidentally classified as healthy.
+    fp = (y_hat == int(Classification.SICK)) * (
+                y == int(Classification.HEALTHY))  # Healthy people accidentally classified as sick (positive).
+    fn = (y_hat == int(Classification.HEALTHY)) * (
+                y == int(Classification.SICK))  # Sick people accidentally classified as healthy.
     return np.average(0.1 * fp + fn)
 
 
@@ -86,8 +88,13 @@ def get_random_params_for_improved_knn_forest():
     return N, K, p, T
 
 
+def get_random_epsilon():
+    epsilon = np.random.uniform(EPSILON_MIN, EPSILON_MAX)
+    return epsilon
+
+
 def k_cross_validation(model, X: np.ndarray, y: np.ndarray, evaluate_fn: callable = classification_rate,
-                       k: int = N_SPLITS) -> float:
+                       k: int = N_SPLITS, prints: bool = True) -> float:
     scores = []
     # Split indices
     train_indices = []
@@ -100,10 +107,14 @@ def k_cross_validation(model, X: np.ndarray, y: np.ndarray, evaluate_fn: callabl
         model.fit(X[train_idx], y[train_idx])
         y_hat = model.predict(X[val_idx])
         scores.append(evaluate_fn(y_hat, y[val_idx]))
-        print(f"Validation {i + 1} out of {len(train_indices)}, score: {scores[-1]}")
+        if prints:
+            print(f"Validation {i + 1} out of {len(train_indices)}, score: {scores[-1]}")
 
     return np.average(scores)
 
 
-def std_normalization(X: np.ndarray, mean: np.ndarray, std: np.ndarray):
-    return (X - mean) / std
+def std_normalization(X: np.ndarray, mean: np.ndarray, std: np.ndarray, enabled: bool = False):
+    if enabled:
+        return (X - mean) / std
+    else:
+        return X

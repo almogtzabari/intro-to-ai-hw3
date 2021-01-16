@@ -3,6 +3,17 @@ import argparse
 from DecisionTree import DecisionTreeClassifier
 from typing import Sequence
 
+__doc__ = \
+    """
+DESCRIPTION:
+    Running this file will fit a DecisionTreeClassifier on the train-set and will print the accuracy (classification rate)
+    on the test-set. You can choose which question to run:
+    Question 1: This is the default, and is the same as running this file without arguments.
+    Question 3: This will look for best M value to use, and print a graph of accuracy as a function of M.
+    Question 4: This will find best M value and fit a model using it, and then print loss on test-set ("10 times loss").
+"""
+
+
 DecisionTreeNode = DecisionTreeClassifier.DecisionTreeNode
 
 
@@ -55,7 +66,7 @@ def ID3_with_early_pruning(X: np.ndarray, y: np.ndarray, M: int):
     return TDIDT(X, y, c, select_feature_based_on_max_information_gain, M=M)
 
 
-def TDIDT(X, y, default, feature_select_fn: callable, M=None):
+def TDIDT(X, y, default, feature_select_fn: callable, M=None, epsilon=None):
     if len(X) == 0 or (M is not None and len(X) < M):
         return DecisionTreeNode(None, None, [], default)
 
@@ -64,37 +75,51 @@ def TDIDT(X, y, default, feature_select_fn: callable, M=None):
         return DecisionTreeNode(None, None, [], c)
 
     # Select feature
-    feature, threshold = feature_select_fn(X, y)
+    if epsilon is not None:
+        feature, threshold = feature_select_fn(X, y, epsilon)
+    else:
+        feature, threshold = feature_select_fn(X, y)
+    if feature is None:
+        return DecisionTreeNode(None, None, [], c)
 
     # Separate dataset
     bigger_equal_indices = (X.T[feature] >= threshold)
     smaller_indices = (X.T[feature] < threshold)
 
-    bigger_equal_sub_tree = TDIDT(X[bigger_equal_indices], y[bigger_equal_indices], c, feature_select_fn, M)
-    smaller_sub_tree = TDIDT(X[smaller_indices], y[smaller_indices], c, feature_select_fn, M)
+    bigger_equal_sub_tree = TDIDT(X[bigger_equal_indices], y[bigger_equal_indices], c, feature_select_fn, M, epsilon)
+    smaller_sub_tree = TDIDT(X[smaller_indices], y[smaller_indices], c, feature_select_fn, M, epsilon)
     return DecisionTreeNode(feature, threshold, [smaller_sub_tree, bigger_equal_sub_tree], c)
 
 
 def find_best_M(M_values: Sequence[int], evaluate_fn: callable, minimize: bool = False, return_score: bool = False):
+    print(f"Searching for best params for ID3.")
+    print(f"Looking for best M value.")
+    print(f"Trying the following values: {M_values}.")
     X_train, y_train = get_dataset(data_set=DataSet.TRAIN_SET)
     avg_scores = []
 
     for M in M_values:
-        print(f"Running on M={M}")
+        print(f"\nRunning cross-validation for param M = {M}")
         model = DecisionTreeClassifier().use_alg(ID3_with_early_pruning, extra_args={"M": M})
         avg_score = k_cross_validation(model, X_train, y_train, evaluate_fn)
         avg_scores.append(np.average(avg_score))
+        print(f"Average validation score for this M: {np.average(avg_score)}\n")
 
     if minimize:
-        best_M = M_values[int(np.argmin(np.array(avg_scores)))]
+        best_M, best_score = M_values[int(np.argmin(np.array(avg_scores)))], np.min(avg_scores)
     else:
-        best_M, best_score = M_values[int(np.argmax(np.array(avg_scores)))]
+        best_M, best_score = M_values[int(np.argmax(np.array(avg_scores)))], np.max(avg_scores)
+
+    print(f"Best M found: M = {best_M}")
+    print(f"Average score for best M is: {np.max(avg_scores)}")
+
     if return_score:
         return best_M, avg_scores
     return best_M
 
 
 def experiment():
+    """ See documentation on question3() """
     M_values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 25, 30]
     X_train, y_train = get_dataset(data_set=DataSet.TRAIN_SET)
 
@@ -139,6 +164,12 @@ def question3() -> None:
 
 
 def question4():
+    """
+        This function is used for question4.
+        The function will find the best M value for early pruning (ID3 with M value) using K-Cross-Validation.
+        Then, this function will fit a DecisionTreeClassifier (with ID3 and the best M value found an) on the entire
+        train-set and print its loss on the test-set ("10 times loss").
+        """
     M_values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 25, 30]
     X_train, y_train = get_dataset(data_set=DataSet.TRAIN_SET)
 
@@ -159,10 +190,11 @@ def question4():
 
 def main(args=None):
     def get_parser():
-        """
-        Creates a new argument parser.
-        """
-        _parser = argparse.ArgumentParser('ID3')
+        _parser = argparse.ArgumentParser(
+            'ID3',
+            formatter_class=argparse.RawTextHelpFormatter,
+            description=__doc__,
+        )
         _parser.add_argument('-q', '--q', type=int, default=1, choices=[1, 3, 4],
                             help="Choose which question to run (Default: 1).")
         return _parser

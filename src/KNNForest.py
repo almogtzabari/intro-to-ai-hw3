@@ -108,7 +108,7 @@ def find_best_params(num_trails: int, return_score: bool = False):
         model = KNNForestClassifier(N, K, p)
         avg_score = k_cross_validation(model, X_train, y_train, classification_rate)
         avg_scores.append(avg_score)
-        print(f"Average validation score for these params: {np.average(avg_score)}\n")
+        print(f"Average validation score for these params: {avg_score}\n")
 
     best_params = params[int(np.argmax(avg_scores))]
     print(f"Best params found: (N, K, p) = ({best_params[0]}, {best_params[1]}, {best_params[2]:.2f})")
@@ -121,9 +121,6 @@ def find_best_params(num_trails: int, return_score: bool = False):
 
 def main(args=None):
     def get_parser():
-        """
-        Creates a new argument parser.
-        """
         _parser = argparse.ArgumentParser(
             'KNNForest',
             formatter_class=argparse.RawTextHelpFormatter,
@@ -144,18 +141,18 @@ def main(args=None):
 
     # Find best parameters
     if args.find is not None:
-        N, K, p = find_best_params(num_trails=args.find)
+        find_best_params(num_trails=args.find)
     else:
         N, K, p = BEST_KNN_FOREST_PARAMS
 
-    # Train the model on entire train-set
-    X_train, y_train = get_dataset(DataSet.TRAIN_SET)
-    knn_fdt = KNNForestClassifier(N, K, p).fit(X_train, y_train)
+        # Train the model on entire train-set
+        X_train, y_train = get_dataset(DataSet.TRAIN_SET)
+        knn_fdt = KNNForestClassifier(N, K, p).fit(X_train, y_train)
 
-    # Evaluate the model
-    X_test, y_test = get_dataset(DataSet.TEST_SET)
-    y_hat = knn_fdt.predict(X_test)
-    print(classification_rate(y_hat, y_test))
+        # Evaluate the model
+        X_test, y_test = get_dataset(DataSet.TEST_SET)
+        y_hat = knn_fdt.predict(X_test)
+        print(classification_rate(y_hat, y_test))
 
 
 if __name__ == '__main__':

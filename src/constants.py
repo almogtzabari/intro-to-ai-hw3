@@ -1,13 +1,17 @@
 import os
 from enum import IntEnum
 
-
 ## Constants
 SRC_DIR = os.path.dirname(__file__)
 TRAIN_FILENAME = os.path.join(SRC_DIR, "train.csv")
 TEST_FILENAME = os.path.join(SRC_DIR, "test.csv")
 ID = 312433576
 N_SPLITS = 5
+
+# CostSensitiveID3 constants
+EPSILON_MIN = 0.01
+EPSILON_MAX = 0.1
+BEST_EPSILON = 0.05
 
 # KNNForest constants
 P_MIN = 0.3
