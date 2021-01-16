@@ -91,22 +91,22 @@ def find_best_epsilon(num_trails: int, return_score: bool = False):
     # Get random epsilon
     params = [get_random_epsilon() for _ in range(num_trails)]
 
-    avg_scores = []
+    avg_losses = []
     X_train, y_train = get_dataset(DataSet.TRAIN_SET)
 
     for trail_id, epsilon in enumerate(params):
         print(
             f"\nTrying epsilon {trail_id + 1} out of {num_trails}.\nEpsilon is {epsilon:.3f}")
         model = DecisionTreeClassifier().use_alg(cost_sensitive_id3, extra_args={"epsilon": epsilon})
-        avg_score = k_cross_validation(model, X_train, y_train, classification_rate)
-        avg_scores.append(avg_score)
-        print(f"Average validation score for this epsilon: {avg_score}\n")
+        avg_loss = k_cross_validation(model, X_train, y_train, ten_times_penalty)
+        avg_losses.append(avg_loss)
+        print(f"Average validation loss for this epsilon: {avg_loss}\n")
 
-    best_epsilon = params[int(np.argmin(avg_scores))]
+    best_epsilon = params[int(np.argmin(avg_losses))]
     print(f"Best epsilon found: epsilon = {best_epsilon:.3f}")
-    print(f"Average score for best params is: {np.min(avg_scores)}")
+    print(f"Average loss for best params is: {np.min(avg_losses)}")
     if return_score:
-        return best_epsilon, np.min(avg_scores)
+        return best_epsilon, np.min(avg_losses)
     else:
         return best_epsilon
 
@@ -124,6 +124,7 @@ def main(args=None):
                                   f"Default is best found earlier by Almog: epsilon = {BEST_EPSILON}\n"
                                   f"Finding best epsilon is using randomly select `NUM_PARAMS_TO_TRY` times and find the one that "
                                   f"minimizes the average loss on the validation-set.\n"
+                                  f"Once found, write it to constant.py at BEST_EPSILON\n"
                                   f"** NOTE ** : EPSILON_MIN, EPSILON_MAX can be found at constants.py and you can change them as well."
                              )
         return _parser

@@ -132,6 +132,7 @@ def main(args=None):
                                   f"Default are best found earlier by Almog: (N, K, P) = ({BEST_KNN_FOREST_PARAMS[0]}, {BEST_KNN_FOREST_PARAMS[1]}, {BEST_KNN_FOREST_PARAMS[2]})\n"
                                   f"Finding best params is using randomly select params `NUM_PARAMS_TO_TRY` times and find the ones that "
                                   f"maximizing the average accuracy on the validation-set.\n"
+                                  f"Once found, write it to constant.py at BEST_KNN_FOREST_PARAMS\n"
                                   f"** NOTE ** : Some constants like N_MIN, N_MAX, etc. can be found at constants.py and you can change them as well."
                              )
         return _parser
