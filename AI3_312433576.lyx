@@ -1221,6 +1221,37 @@ status open
 1
 \end_layout
 
+\begin_layout Subsubsection*
+סעיף
+\family roman
+\series bold
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\end_layout
+
 \begin_layout Standard
 לאחר אימון המסווג על קבוצת האימון ובדיקה על ידי קבוצת הבוחן הדיוק המתקבל
  הינו 
@@ -1853,6 +1884,51 @@ status open
 \end_inset
 
  גם ללא גיזום.
+ ביתר פירוט, ייתכן שבעת בניית העץ מספר הדוגמאות מגיע 
+\begin_inset Quotes eld
+\end_inset
+
+מהר יחסית
+\begin_inset Quotes erd
+\end_inset
+
+ מתחת ל- 
+\begin_inset Formula $M$
+\end_inset
+
+ עבור 
+\begin_inset Formula $M$
+\end_inset
+
+ שבערך גדול מ- 
+\begin_inset Formula $5$
+\end_inset
+
+ ולכן בסופו של דבר נוצר עץ 
+\begin_inset Quotes eld
+\end_inset
+
+קטן מדי
+\begin_inset Quotes erd
+\end_inset
+
+, ואילו עבור 
+\begin_inset Formula $M$
+\end_inset
+
+ שבערך קטן מ- 
+\begin_inset Formula $5$
+\end_inset
+
+ אין השפעה כי )אולי( כמות הדוגמאות בכל צומת גדולה מ- 
+\begin_inset Formula $5$
+\end_inset
+
+ או שווה 
+\begin_inset Formula $0$
+\end_inset
+
+, ולכן העץ שנוצר זהה לעץ שנוצר ללא גיזום.
 \end_layout
 
 \begin_layout Subsubsection*

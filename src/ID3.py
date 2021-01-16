@@ -6,11 +6,11 @@ from typing import Sequence
 __doc__ = \
     """
 DESCRIPTION:
-    Running this file will fit a DecisionTreeClassifier on the train-set and will print the accuracy (classification rate)
+    Running this file will fit a DecisionTreeClassifier with ID3 on the train-set and will print the accuracy (classification rate)
     on the test-set. You can choose which question to run:
     Question 1: This is the default, and is the same as running this file without arguments.
-    Question 3: This will look for best M value to use, and print a graph of accuracy as a function of M.
-    Question 4: This will find best M value and fit a model using it, and then print loss on test-set ("10 times loss").
+    Question 3: This will look for best M value to use, and draw a graph of average accuracy as a function of M.
+    Question 4: This will find best M value and fit a model using it, and then print loss on test-set ("ten_times_penalty() loss function in utils.py").
 """
 
 
@@ -103,7 +103,7 @@ def find_best_M(M_values: Sequence[int], evaluate_fn: callable, minimize: bool =
         model = DecisionTreeClassifier().use_alg(ID3_with_early_pruning, extra_args={"M": M})
         avg_score = k_cross_validation(model, X_train, y_train, evaluate_fn)
         avg_scores.append(np.average(avg_score))
-        print(f"Average validation score for this M: {np.average(avg_score)}\n")
+        print(f"Average validation score for this M: {avg_score}\n")
 
     if minimize:
         best_M, best_score = M_values[int(np.argmin(np.array(avg_scores)))], np.min(avg_scores)
@@ -119,8 +119,9 @@ def find_best_M(M_values: Sequence[int], evaluate_fn: callable, minimize: bool =
 
 
 def experiment():
-    """ See documentation on question3() """
-    M_values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 25, 30]
+    """ It is best to use `python ID3.py -h` to get all necessary information, but if not possible see documentation on
+    question3() function in this file. """
+    M_values = [1, 3, 6, 8, 10, 15, 20, 25, 30, 40, 50, 75, 100, 125, 150]
     X_train, y_train = get_dataset(data_set=DataSet.TRAIN_SET)
 
     best_M, avg_accuracies = find_best_M(M_values, classification_rate, minimize=False, return_score=True)
