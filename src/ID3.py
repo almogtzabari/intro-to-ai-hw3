@@ -102,7 +102,7 @@ def find_best_M(M_values: Sequence[int], evaluate_fn: callable, minimize: bool =
         print(f"\nRunning cross-validation for param M = {M}")
         model = DecisionTreeClassifier().use_alg(ID3_with_early_pruning, extra_args={"M": M})
         avg_score = k_cross_validation(model, X_train, y_train, evaluate_fn)
-        avg_scores.append(np.average(avg_score))
+        avg_scores.append(avg_score)
         print(f"Average validation score for this M: {avg_score}\n")
 
     if minimize:
@@ -111,7 +111,7 @@ def find_best_M(M_values: Sequence[int], evaluate_fn: callable, minimize: bool =
         best_M, best_score = M_values[int(np.argmax(np.array(avg_scores)))], np.max(avg_scores)
 
     print(f"Best M found: M = {best_M}")
-    print(f"Average score for best M is: {np.max(avg_scores)}")
+    print(f"Average score for best M is: {best_score}")
 
     if return_score:
         return best_M, avg_scores
@@ -171,12 +171,11 @@ def question4():
         Then, this function will fit a DecisionTreeClassifier (with ID3 and the best M value found an) on the entire
         train-set and print its loss on the test-set ("10 times loss").
         """
-    M_values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 25, 30]
+    M_values = [1, 3, 6, 8, 10, 15, 20, 25, 30, 40, 50, 75, 100, 125, 150]
     X_train, y_train = get_dataset(data_set=DataSet.TRAIN_SET)
 
     # Find best M using new loss function
-    best_M = find_best_M(X_train, y_train, M_values, ten_times_penalty, minimize=True)
-    print(f"Best M is: {best_M}")
+    best_M = find_best_M(M_values, ten_times_penalty, minimize=True)
 
     # Train model on entire train-set using the best M found
     dt = DecisionTreeClassifier().use_alg(ID3_with_early_pruning, extra_args={"M": best_M}).fit(X_train, y_train)

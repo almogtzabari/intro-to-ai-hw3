@@ -2060,7 +2060,7 @@ status open
 \begin_inset Formula $M=1$
 \end_inset
 
-.
+ - כלומר ללא גיזום.
 \end_layout
 
 \begin_layout Standard
@@ -2195,15 +2195,35 @@ candidate=\left(FeatureID,Threshold,IG\right)
 \begin_inset Formula $\left(FeatureID,Threshold,IG\right)$
 \end_inset
 
- עבורו מתקיים 
+ נבצע את כל מה שצריך מבין הבאים:
+\end_layout
+
+\begin_layout Itemize
+אם 
 \begin_inset Formula $IG_{max}<IG$
 \end_inset
 
-, נוסיף אותו לרשימת המועמדים 
-\begin_inset Formula $Candidates$
+ אז נעדכן את 
+\begin_inset Formula $IG_{max}$
 \end_inset
 
- ונבצע את הסינון הבא:
+.
+\end_layout
+
+\begin_layout Itemize
+אם מתקיים 
+\begin_inset Formula $\left|\frac{IG}{IG_{max}}-1\right|<\epsilon$
+\end_inset
+
+ נוסיף אותו לרשימת המועמדים.
+\end_layout
+
+\begin_layout Standard
+כמו כן, אם ביצענו עידכון ל- 
+\begin_inset Formula $IG_{max}$
+\end_inset
+
+ אז נבצע את הסינון הבא:
 \end_layout
 
 \begin_layout Standard
@@ -2240,7 +2260,7 @@ candidate=\left(FeatureID,Threshold,IG\right)
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\left|\frac{x}{best}-1\right|<\epsilon\iff1-\epsilon<\frac{x}{best}<1+\epsilon\iff best\cdot\left(1-\epsilon\right)<x<best\cdot\left(1+\epsilon\right)
+\left|\frac{candidate.IG}{IG_{max}}-1\right|<\epsilon\iff1-\epsilon<\frac{candidate.IG}{IG_{max}}<1+\epsilon\iff IG_{max}\cdot\left(1-\epsilon\right)<candidate.IG<IG_{max}\cdot\left(1+\epsilon\right)
 \]
 
 \end_inset
@@ -2249,7 +2269,11 @@ candidate=\left(FeatureID,Threshold,IG\right)
 \end_layout
 
 \begin_layout Standard
-לבסוף, לאחר שיש בידינו רשימה של מועמדים בעלי תוספת המידע המקסימלית עד כדי
+לבסוף, לאחר שעברנו על כל המאפיינים וערכי ה- 
+\begin_inset Formula $Threshold$
+\end_inset
+
+ שלהם וכעת שיש בידינו רשימה של מועמדים בעלי תוספת המידע המקסימלית עד כדי
  
 \begin_inset Formula $\epsilon$
 \end_inset
@@ -2308,6 +2332,34 @@ candidate=\left(FeatureID,Threshold,IG\right)
 ל.
 \end_layout
 
+\begin_layout Standard
+בכך למעשה אנו מבטיחים כי המאפיינים וערך הסף שנבחר יקיימו את הבאים:
+\end_layout
+
+\begin_layout Enumerate
+תוספת המידע המתקבלת עבורם היא לכל היותר רחוקה ב- 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ אחוז מתוספת המידע המקסימלית האפשרית.
+\end_layout
+
+\begin_layout Enumerate
+מבין המאפיינים שעומדים בדרישת ה- 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ המאפיין שנבחר ממזער את פונקציית ה- 
+\begin_inset Formula $Loss$
+\end_inset
+
+ )תחת ההנחה של 
+\begin_inset Formula $LookAhead$
+\end_inset
+
+ של אחד, כלומר כאילו כל אחד מילדיו הם עלים(.
+\end_layout
+
 \begin_layout Subsubsection*
 סעיף
 \family roman
@@ -2357,7 +2409,7 @@ candidate=\left(FeatureID,Threshold,IG\right)
 \begin_inset Quotes erd
 \end_inset
 
-ל השגיאה המתקבלת עבור סט האימון וה- 
+ל השגיאה המתקבלת עבור סט האימון ועבור ה- 
 \begin_inset Formula $\epsilon$
 \end_inset
 
@@ -2404,6 +2456,38 @@ candidate=\left(FeatureID,Threshold,IG\right)
 \noun default
 \color inherit
 5
+\end_layout
+
+\begin_layout Standard
+הבהרות לסעיפים הבאים:
+\end_layout
+
+\begin_layout Itemize
+מסווגי המטרה מסומנים באפור.
+\end_layout
+
+\begin_layout Itemize
+סיווג 
+\begin_inset Formula $"-"$
+\end_inset
+
+ מתאים לערך 
+\begin_inset Formula $0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+סיווג 
+\begin_inset Formula $"+"$
+\end_inset
+
+ מתאים לערך 
+\begin_inset Formula $1$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -2472,6 +2556,14 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+הבהרה: מסווג המטרה מסומן באפור ומתלכד עם המסווג הנוצר מ- 
+\begin_inset Formula $ID3$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -3501,7 +3593,7 @@ w_{j}=\frac{e^{\frac{d\left(x_{i},j\right)}{T}}}{\sum_{\text{\ensuremath{l\in}k\
 \end_layout
 
 \begin_layout Standard
-תוצאת הדיוק המתקבלת על סט האימון הינה 
+תוצאת הדיוק המתקבלת על סט המבחן הינה 
 \begin_inset Formula $0.9911504424778761$
 \end_inset
 
