@@ -3439,12 +3439,23 @@ h_{truth}\left(x_{i}\right)=h_{ID3}\left(x_{i}\right)=\begin{cases}
 כאשר:
 \begin_inset Formula 
 \[
+predict\left(\text{tree\_j},x_{i}\right)=\begin{cases}
+1 & \text{if tree j predicts \ensuremath{x_{i}} is `sick`}\\
+-1 & \text{if tree j predicts \ensuremath{x_{i}} is `healty`}
+\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
 w_{j}=\frac{e^{\frac{d\left(x_{i},j\right)}{T}}}{\sum_{\text{\ensuremath{l\in}k\_closest\_trees\_to\_x\_i}}e^{\frac{d\left(x_{i},l\right)}{T}}}
 \]
 
 \end_inset
 
-וכאשר:
+
 \begin_inset Formula 
 \[
 d\left(x_{i},l\right)=\begin{cases}
